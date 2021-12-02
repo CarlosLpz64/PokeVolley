@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -112,6 +114,15 @@ public class MainActivity extends AppCompatActivity {
                     re.setLayoutManager(lr);
                     re.setHasFixedSize(true);
                     re.setAdapter(Ad);
+
+                    Ad.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            String pokedetalles;
+                            pokedetalles = listaPokemon.get(re.getChildAdapterPosition(v)).getUrl();
+                            Toast.makeText(getApplicationContext(), pokedetalles, Toast.LENGTH_SHORT).show();
+                        }
+                    });
 
 
                 } catch (JSONException e) {

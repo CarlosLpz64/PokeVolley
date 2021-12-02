@@ -13,19 +13,23 @@ import com.example.ejvolley.R;
 
 import java.util.List;
 
-public class PokeAdapter extends RecyclerView.Adapter<PokeAdapter.ViewHolder>  {
+public class PokeAdapter extends RecyclerView.Adapter<PokeAdapter.ViewHolder> implements View.OnClickListener  {
 
     //LISTA
     private List<Pokemon> Lista;
     public PokeAdapter(List<Pokemon> lista) {
         Lista = lista;
     }
+    //ONCLICK
+    private View.OnClickListener listener;
 
     @NonNull
     @Override
     public PokeAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.disenorv, null, false);
+        //ONCLICK
+        v.setOnClickListener(this);
         return new ViewHolder(v);
     }
 
@@ -38,6 +42,18 @@ public class PokeAdapter extends RecyclerView.Adapter<PokeAdapter.ViewHolder>  {
     @Override
     public int getItemCount() {
         return Lista.size();
+    }
+
+    //MÉTODO ONCLICK
+    public void setOnClickListener(View.OnClickListener listener){
+        this.listener = listener;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (listener != null){
+            listener.onClick(v);
+        }
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
