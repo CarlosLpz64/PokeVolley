@@ -102,12 +102,6 @@ public class MainActivity extends AppCompatActivity {
                     final Type tipoListaPokemones = new TypeToken<List<Pokemon>>(){}.getType();
                     final List<Pokemon> listaPokemon = gson.fromJson(PokeJson.toString(),tipoListaPokemones);
 
-
-                    //List<Pokemon> PokeAux = new ArrayList<>();
-                    //PokeAux.add(new Pokemon("PIKACHU", "SI"));
-
-
-
                     //Adaptador
                     PokeAdapter Ad = new PokeAdapter(listaPokemon);
                     LinearLayoutManager lr = new LinearLayoutManager(getApplicationContext());
@@ -118,9 +112,12 @@ public class MainActivity extends AppCompatActivity {
                     Ad.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            String pokedetalles;
-                            pokedetalles = listaPokemon.get(re.getChildAdapterPosition(v)).getUrl();
-                            Toast.makeText(getApplicationContext(), pokedetalles, Toast.LENGTH_SHORT).show();
+                            String pokenumero;
+                            pokenumero = listaPokemon.get(re.getChildAdapterPosition(v)).getNumero();
+                            //Toast.makeText(getApplicationContext(), pokedetalles, Toast.LENGTH_SHORT).show();
+                            Intent ir = new Intent(v.getContext(), pokedetalles.class);
+                            ir.putExtra("numero", pokenumero);
+                            v.getContext().startActivity(ir);
                         }
                     });
 

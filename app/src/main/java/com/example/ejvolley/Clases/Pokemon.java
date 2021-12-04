@@ -3,6 +3,8 @@ package com.example.ejvolley.Clases;
 public class Pokemon {
     String name;
     String url;
+    String pokenumero;
+    String[] pokepartes;
 
     public Pokemon(String name, String url) {
         this.name = name;
@@ -23,5 +25,11 @@ public class Pokemon {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getNumero(){
+        pokepartes = url.split("/");
+        pokenumero = pokepartes[pokepartes.length-1];
+        return pokenumero;
     }
 }
