@@ -8,4 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="fondo">#6F6D6D</color>
+    <color name="pokered">#FA2A2A</color>
+    <color name="pokeyellow">#F8AD16</color>
+    <color name="pokewhite">#EEEEE4</color>
+    <color name="pokeblue">#3F86F1</color>
 </resources>

@@ -3,6 +3,7 @@ package com.example.ejvolley.Adaptadores;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ejvolley.Clases.Pokemon;
 import com.example.ejvolley.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -22,6 +24,7 @@ public class PokeAdapter extends RecyclerView.Adapter<PokeAdapter.ViewHolder> im
     }
     //ONCLICK
     private View.OnClickListener listener;
+
 
     @NonNull
     @Override
@@ -59,14 +62,18 @@ public class PokeAdapter extends RecyclerView.Adapter<PokeAdapter.ViewHolder> im
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView Nombre;
+        ImageView poke_icon;
+        String url_pokeball = "https://cdn-icons-png.flaticon.com/512/528/528101.png";
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             Nombre=itemView.findViewById(R.id.txt1);
+            poke_icon=itemView.findViewById(R.id.pokeballimg);
         }
 
         public void bind(Pokemon pokemon) {
             Nombre.setText(pokemon.getName());
+            Picasso.get().load(url_pokeball).into(poke_icon);
         }
     }
 }
