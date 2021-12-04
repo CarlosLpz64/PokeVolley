@@ -113,10 +113,13 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
                             String pokenumero;
+                            String nombre;
                             pokenumero = listaPokemon.get(re.getChildAdapterPosition(v)).getNumero();
+                            nombre = listaPokemon.get(re.getChildAdapterPosition(v)).getName();
                             //Toast.makeText(getApplicationContext(), pokedetalles, Toast.LENGTH_SHORT).show();
                             Intent ir = new Intent(v.getContext(), pokedetalles.class);
                             ir.putExtra("numero", pokenumero);
+                            ir.putExtra("nombre", nombre);
                             v.getContext().startActivity(ir);
                         }
                     });
